@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Scoped Beans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&amp;family=Jacquarda+Bastarda+9&amp;family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap" rel="stylesheet"/>
+
+    <link href="../styles/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="../styles/media.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+    <h:form id="form">
+        <h:outputText value="ApplicationScopedBean.x: " />
+        <h:outputText value="#{applicationScopedBean.x}" />
+        <br />
+
+        <h:outputText value="SessionScopedBean.x: " />
+        <h:outputText value="#{sessionScopedBean.x}" />
+        <br />
+
+        <h:outputText value="RequestScopedBean.x: " />
+        <h:outputText value="#{requestScopedBean.x}" />
+        <br />
+
+        <h:outputText value="ViewScopedBean.x: " />
+        <h:outputText value="#{viewScopedBean.x}" />
+        <br />
+
+        <h:commandButton value="+1" action="#{beanController.incAllX}">
+            <f:ajax execute="@this" render="form" />
+        </h:commandButton>
+    </h:form>
+
+    <h:form id="viewForm">
+        <h:outputText id="outputText" value="text" />
+        <h:commandButton value="Add Text" action="#{viewBean.addText}" />
+        <h:commandButton value="Change Text" action="#{viewBean.changeText}" />
+    </h:form>
+
+</h:body>
+</html>
